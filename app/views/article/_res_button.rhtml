@@ -1,0 +1,8 @@
+<% if !model.isLive %>
+	<%= sprintf('%06d', model.id) %>
+<% else %>
+	<% form_tag(post_form_url, :method => :get, :target => "PostForm") { %>
+		<%= hidden_field_tag("parent_id", model.id.to_s) %>
+		<%= submit_tag(sprintf('%06d', model.id), :name => "Res") %>
+	<% } %>
+<% end %>

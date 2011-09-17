@@ -1,0 +1,3 @@
+<%= flash[:msg] %>
+<%= error_messages_for :posting %>
+<%= error_messages_for :attached %>

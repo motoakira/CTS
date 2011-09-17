@@ -1,0 +1,31 @@
+
+<%	if @posting.parent_id.nil? %>
+	<p>Unkown Case</p>
+<% else %>
+	<% if @posting.parent_id < 1 %>
+		<h2>基記事（新規発言）</h2>
+	<% else %>
+		<h2>記事: ＃<%= sprintf("%06d", @posting.parent_id) %>へのコメント</h2>
+	<% end %>
+<% accept_list = Type2accept.join(", ") %>
+	<% form_for :posting, :url => rcv_post_url,
+		:html => {:multipart => true, 'target' => 'Threads'}  do | form | %>
+			<%= hidden_field_tag "parent_id", @posting.parent_id %>
+		Handle:<%= form.text_field :author, :size => 16	%>
+		<br />
+		Title:<%= form.text_field :title, :size => 32 %>
+		<br />
+		本文;<br />
+		<%= form.text_area :article, :rows => 14, :cols => 82 %><br />
+		File to Upload:<% fields_for :attached do |attached| %>
+			<%= attached.file_field("file2up", 'accept' =>  accept_list)  %>
+		<% end %><br />
+		削除キー<%=  form.password_field(:delkey, :size => 8, :maxlength => 8) %><br />
+		<%= submit_tag("Post", :onclick => "javascript: setTimeout('window.close();', 0 * 1000)") -%><input type = "reset">
+	<% end %>
+
+	<hr />
+	<div style = "text-align: right">
+			<%= render(:partial => "shared/help") %>
+	</div>
+<% end %>

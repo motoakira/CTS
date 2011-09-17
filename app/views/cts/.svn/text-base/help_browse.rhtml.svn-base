@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Help-Browse</title>
+</head>
+<body>
+<dl>
+<dt><a name="label-0" id="label-0">New</a></dt><!-- RDLabel: "New" -->
+<dd>
+新規投稿をする時押します。
+投稿フォームのウィンドウが開きます。
+</dd>
+<dt><a name="label-1" id="label-1">発言番号</a></dt><!-- RDLabel: "Re" -->
+<dd>
+既存の発言に対する反応／コメントを投稿する時押します。
+コメント投稿フォームのウィンドウが開きます。
+</dd>
+<!-- 
+<dt><a name="label-2" id="label-2">Mail</a></dt>
+<dd>
+既存の発言の投稿者にmailを出します。
+</dd>
+ -->
+<dt><a name="label-3" id="label-3">投稿規定</a></dt><!-- RDLabel: "投稿規定" -->
+<dd>
+投稿規定を、別ウィンドウで表示します。
+</dd>
+<dt><a name="label-4" id="label-4">？</a></dt><!-- RDLabel: "?" -->
+<dd>
+この文書を表示します。
+</dd>
+</dl>
+<h6><a name="label-5" id="label-5">Updated: 2006/09/13</a></h6>
+<div class = "Copyright" >
+<p> &#169; 2003-2006  Motoakira &lt;motoakira@mac.com&gt;</p>
+</div>
+
+
+</body>
+</html>

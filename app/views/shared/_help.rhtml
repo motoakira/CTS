@@ -1,0 +1,6 @@
+<%= link_to "Rules", rules_url, :target => "Rules" -%>
+<% if @page_title == "PostForm" %>
+<%= link_to "？", help_post_url, :target => "Help Post" -%>
+<% else %>
+<%= link_to "？", help_browse_url, :target => "Help Browse" -%>
+<% end %>

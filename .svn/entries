@@ -1,0 +1,129 @@
+10
+
+dir
+7
+svn+ssh://localhost/Volumes/Reserve/svnrepo/CTS
+svn+ssh://localhost/Volumes/Reserve/svnrepo
+
+
+
+2011-09-17T04:00:40.085576Z
+7
+motoakira
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bf01ca3c-45d0-4555-9589-2640204776bc
+
+test
+dir
+
+app
+dir
+
+tmp
+dir
+
+log
+dir
+
+Rakefile
+file
+
+
+
+
+2011-09-12T06:51:16.000000Z
+17f2f134da4cd31ea095d5868ca89e86
+2011-04-23T11:32:32.896496Z
+2
+motoakira
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+307
+
+script
+dir
+
+config
+dir
+
+db
+dir
+
+doc
+dir
+
+lib
+dir
+
+vendor
+dir
+
+README
+file
+
+
+
+
+2011-09-12T06:51:16.000000Z
+0cdf56769f20a2b73a929ac3ba633152
+2011-04-23T11:32:32.896496Z
+2
+motoakira
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10619
+
+public
+dir
+

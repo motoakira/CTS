@@ -1,0 +1,63 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+<% 1.upto(30) do |i| %>
+post_<%= i %>:
+  id: <%= i %>
+  parent_id: 0
+  isLive: <%= true %>
+  author: moto
+  title: title_<%= i %>
+  article: t/o
+  delkey: 4044
+  comment_tree_id: <%= i %>
+<% end %>
+post_31:
+  id: 31
+  parent_id: 0
+  isLive: <%= true %>
+  author: moto
+  title: title_31
+  article: "The quick brown fox\njumps over\nlazy dog.\n"
+  delkey: 4044
+  comment_tree_id: 31
+post_32:
+  id: 32
+  parent_id: 31
+  isLive: <%= true %>
+  author: moto
+  title: Re:title_32
+  article: "＞ The quick brown fox\n＞ jumps over\n＞ lazy dog.\n"
+  delkey: 4044
+  comment_tree_id: 31
+post_33:
+  id: 33
+  parent_id: 31
+  isLive: <%= true %>
+  author: moto
+  title: Re:title_33
+  article: "＞ The quick brown fox\n＞ jumps over\n＞ lazy dog.\n"
+  delkey: 4044
+  comment_tree_id: 31
+post_34:
+  id: 34
+  parent_id: 32
+  isLive: <%= true %>
+  author: moto
+  title: Re^2:title_34
+  article: "＞＞ The quick brown fox\n＞＞ jumps over\n＞＞ lazy dog.\n"
+  delkey: 4044
+  comment_tree_id: 31
+post_35:
+  id: 35
+  parent_id: 34
+  isLive: <%= true %>
+  author: moto
+  title: Re^3:title_35
+  article: "＞＞＞ The quick brown fox\n＞＞＞ jumps over\n＞＞＞ lazy dog.\n"
+  delkey: 4044
+  comment_tree_id: 31

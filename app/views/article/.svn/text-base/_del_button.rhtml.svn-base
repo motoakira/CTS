@@ -1,0 +1,9 @@
+<%if model.isLive %>
+<%	form_tag(del_post_url, :target => 'Threads') { %>
+		<%= hidden_field_tag("to_del", model.id.to_s) %>
+		削除キー<%= password_field_tag("delkey", "", :size => 8) %>
+		<%= submit_tag("Del", :name => "Del") %>
+<%	} %>
+<% else %>
+	<br />
+<% end %>

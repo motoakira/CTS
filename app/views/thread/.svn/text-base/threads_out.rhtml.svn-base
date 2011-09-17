@@ -1,0 +1,24 @@
+<%
+def entry(node, gen)
+	line =""
+	gen.times { line += "&mdash;" }
+	line += sprintf("[%06d -- %-16s] %-40s",
+		node.id, handle_read(node.author), title_read(node.title)).gsub(/ /, "&nbsp;")
+end
+%>
+<% if ( @trees.nil? || @trees.empty? || @trees.size < 1 ) %>
+	<p>No Threads</p>
+<% else %>
+	<% #	cgi.out("cookie" => cgi.cookies) %>
+
+	<%	@trees.each do |tree| %>
+
+		<p><% tree.each do | node, gen | %>
+			<%= link_to entry(node, gen), cueto_url(node.id), :id => node.id, :target => "Article" %>
+			<br />
+		<% end %>
+		</p>
+	<% end %>
+<% end %>
+
+

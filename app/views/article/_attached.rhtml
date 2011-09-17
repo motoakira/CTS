@@ -1,0 +1,15 @@
+<%
+ext = File.extname(attachment)
+if ext == ".mov" || ext == ".mp4" || ext == ".avi"
+# 動画
+	obj = '<object data ="' + attachment +'">' +
+			@model.attached + '</object>'
+elsif ext == ".jpeg" || ext == ".jpg" || ext == ".gif" || ext == ".png"
+# 静止画
+	obj = '<img src ="' + attachment + '" height="240">' 
+else
+# その他
+	obj = '<a href="' + attachment + '">' + @model.attached + '</a>'
+end
+
+%>

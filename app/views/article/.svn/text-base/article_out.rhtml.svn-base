@@ -1,0 +1,59 @@
+
+<% if flash[:msg] -%>
+	<%= flash[:msg] -%>
+<% else -%>
+
+
+<table width = "100%">
+	<tr valign = "top">
+		<td width = "80%">
+			<table>
+				<tr valign = "top">
+					<tr><td><%= render :partial => "res_button", 
+							:locals => {:model => @posting} -%></td>
+					<td>
+					<%	if @posting.parent_id < 1 %> 
+								
+					<%	else %> 
+						&ndash;&nbsp;
+						<%= sprintf('%06d', @posting.parent_id) -%>へのコメント
+					<% end %>
+					</td></tr>
+					<tr valign = "middle">
+						<th>Handle</th> 
+						<td><%= h handle_read(@posting.author) -%></td>
+					</tr>
+					<tr valign = "middle">
+						<th>Title</th><td><%= h title_read(@posting.title) -%></td>
+					</tr>
+				</tr>
+			</table>
+			<td width = "20%">
+				<table>
+					<tr valign = "top">
+						<th align = "right">
+							<%= render :partial => "del_button", 
+								:locals => {:model => @posting} -%>
+							</th>
+					</tr>
+					<tr valign = "middle">
+						<th><%= @posting.updated_at -%></th>
+					</tr>
+				</table>
+			</td>
+		</td>
+	</tr>
+</table>
+<hr/>
+<table width = "100%">
+	<tr "valign" = "top">
+	<%	if  @posting.attached.nil? %>
+			<td><%= article_read(@posting.article) %></td> 
+	<%	else %>
+			<td width = "60%"><%= article_read(@posting.article) %></td>
+			<td align = "right" width = "40%">
+				<img src = "<%= url_for(:action => 'photo', :id => @posting.id) %>"/></td>
+	<%	end %>
+	</tr>
+</table>
+<% end %>

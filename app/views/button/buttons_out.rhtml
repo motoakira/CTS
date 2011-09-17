@@ -1,0 +1,19 @@
+<table width = "100%"><tr valign = "top">
+	<td align = "left", width = "30%">
+		<% form_tag post_form_url,  :method => :get, :target => "PostForm" do %>
+			<%= hidden_field_tag "parent_id", "0" %>
+			<%= submit_tag "New", :name => "New" %>
+		<% end %>
+	</td>
+	<td align = "right">
+	<%	form_tag threads_url, :method => :get, :target => "Threads" do %>
+	<%=		select_tag "Past", 
+				options_for_select(@option_array, "0") %>
+	<%=		submit_tag "Go", :name => "GoPast" %>
+	<%	end -%>
+	</td>
+	<td align = "right">
+		<%= render(:partial => "shared/help") %>
+	</td>
+</tr></table>
+
