@@ -16,7 +16,7 @@ class CommentTreeTest < ActiveSupport::TestCase
 			buf << '<' + node.id.to_s + ' ' + gen.to_s + '>'
 		}
 #p buf.join
-		assert "<31 0><32 1><34 2><33 1>" == buf.join
+		assert_equal "<31 0><32 1><34 2><35 3><33 1>", buf.join
 	end
 
 end
