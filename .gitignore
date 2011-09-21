@@ -1,0 +1,6 @@
+/db/development.*
+/db/test.*
+/db/production.*
+
+/log/*.log
+
