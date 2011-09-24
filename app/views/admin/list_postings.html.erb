@@ -1,0 +1,17 @@
+<h1>Admin#list_postings</h1>
+<ul>
+	<% for posting in @all_postings %>
+		<li><%= link_to "[X]", { # link_to options
+					:controller => 'admin',
+					:action => 'delete_posting',
+					:id => posting
+				},
+				{ # html options
+					:method => :post,
+					:confirm => "Really delete #{posting.id} ?"
+				} %>
+			<%= h(posting.id.to_s + posting.title) %>
+# 記事本文の最初の十数文字を出したい。
+		</li>
+	<% end %>
+</ul>

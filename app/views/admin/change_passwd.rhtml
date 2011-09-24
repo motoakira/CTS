@@ -1,0 +1,20 @@
+<div class="CTS-form">
+	<%= error_messages_for 'admin' %>
+	
+	<fieldset>
+		<legend>Changing Password</legend>
+		
+		<% form_for :admin do |form| %>
+			<p>
+				<label for "admin_password">New Password:</label>
+				<%= form.password_field :password, :size => 40 %>
+			</p>
+			<p>
+				<label for "admin_password_confirmation">Confirm:</label>
+				<%= form.password_field :password_confirmation, :size => 40 %>
+			</p>
+			
+			<%= submit_tag "Change Password", :class => "submit" %>
+		<% end %>
+	</fieldset>
+</div>
