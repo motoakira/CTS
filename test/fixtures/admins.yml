@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+admin:
+   name: "admin"
+   hashed_password: "3e72603ea3ec3394377bcc48445db8dbc866e6f8"
+   salt: "184661200.510115497232435"
