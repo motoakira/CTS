@@ -83,6 +83,29 @@ ActionController::Routing::Routes.draw do |map|
 	:controller => "cts",
 	:action => "rules"
 
+  map.admin_change_passwd 'CTS/admin/delete_posting',
+	:controller => 'admin',
+	:action => 'delete_posting'
+  map.admin_change_passwd 'CTS/admin/change_passwd',
+	:controller => 'admin',
+	:action => 'change_passwd'
+  map.admin_list_postings 'CTS/admin/list_postings',
+	:controller => 'admin',
+	:action => 'list_postings'
+  map.admin_logout 'CTS/admin/logout',
+	:controller => 'admin',
+	:action => 'logout'
+  map.admin_login 'CTS/admin/login',
+	:controller => 'admin',
+	:action => 'login'
+  map.admin_index 'CTS/admin/index',
+	:controller => 'admin',
+	:action => 'index'
+  map.admin_else 'CTS/admin/*any',
+	:controller => 'admin',
+	:action => 'index'
+
+
   map.cts 'CTS',
 	:conditions => { :method => :get },
 	:controller => "cts",
