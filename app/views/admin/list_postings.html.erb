@@ -10,8 +10,9 @@
 					:method => :post,
 					:confirm => "Really delete #{posting.id} ?"
 				} %>
-			<%= h(posting.id.to_s + posting.title) %>
-# 記事本文の最初の十数文字を出したい。
+			<%= sprintf("[%06d -- %-16s] %-40s", 
+				posting.id, handle_read(posting.author), title_read(posting.title)) -%>
+<!-- 記事本文の最初の十数文字を出したい。-->
 		</li>
 	<% end %>
 </ul>

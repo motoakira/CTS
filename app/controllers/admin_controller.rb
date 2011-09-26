@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
 
-#	layout "admin"
+	layout "admin"
 
   def login
 #!!! a bootstrap
@@ -37,8 +37,11 @@ class AdminController < ApplicationController
 
 	def change_passwd
 		@admin = Admin.find_by_name(Admin::NAME)
-		@admin.password = params[:admin][:password]
-		@admin.password_confirmation = params[:admin][:password_confirmation]
+		if params[:admin].nil?
+		else
+			@admin.password = params[:admin][:password]
+			@admin.password_confirmation = params[:admin][:password_confirmation]
+		end
 		if request.post? && @admin.save
 			flash.now[:notice] = "Password is changed."
 			@admin = Admin.new
