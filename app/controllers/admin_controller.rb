@@ -3,14 +3,20 @@ class AdminController < ApplicationController
 #	layout "admin"
 
   def login
+#!!! a bootstrap
+	if (Admin.find_by_name(Admin::NAME)).nil?
+		admin = initial_administrator()
+		admin.save
+	end
+#!!!
 	session[:admin_id] = nil
 	if request.post?
-		admin = Admin.authenticate(params[:name], params[:password])
+		admin = Admin.authenticate(Admin::NAME, params[:password])
 		if admin
 			session[:admin_id] = admin.id
 			redirect_to(:action => "index")
 		else
-			flash[:notice] = "Invalid admin/password combination"
+			flash[:notice] = "Invalid password"
 		end
 	end
   end
@@ -30,7 +36,9 @@ class AdminController < ApplicationController
   end
 
 	def change_passwd
-		@admin = Admin.new(params[:admin])
+		@admin = Admin.find_by_name(Admin::NAME)
+		@admin.password = params[:admin][:password]
+		@admin.password_confirmation = params[:admin][:password_confirmation]
 		if request.post? && @admin.save
 			flash.now[:notice] = "Password is changed."
 			@admin = Admin.new
@@ -43,5 +51,11 @@ class AdminController < ApplicationController
 			posting.disable	#!!!! モデル：Postingに、記事削除の機能を !!!!
 		end
 		redirect_to(:action => :list_postings)
+	end
+
+private
+	def initial_administrator
+		Admin.new(:name => Admin::NAME, :password => Admin::PASSWORD, 
+				:password_confirmation => Admin::PASSWORD, :salt => Admin::SALT)
 	end
 end

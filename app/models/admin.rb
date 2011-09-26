@@ -1,6 +1,10 @@
 require	'digest/sha1'
 
 class Admin < ActiveRecord::Base
+NAME = 'admin'
+PASSWORD = '1234'
+SALT = 'nacl'
+
 	validates_presence_of	:name
 	validates_uniqueness_of	:name
 	
