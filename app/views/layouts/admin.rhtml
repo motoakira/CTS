@@ -10,6 +10,11 @@
 	<TITLE><%= @page_title %></TITLE>
 </HEAD>
 <body id="admin" style = "white-space: nowrap">
+	<div id="common">
+		<p align="right">
+			<%= link_to "Log Out", :action => "logout" %>
+		</p>
+	</div>
 	<div id="main">
 	<% if flash[:notice] -%>
 		<divid="notice"><%= flash[:notice] %></div>
