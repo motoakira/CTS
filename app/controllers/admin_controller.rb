@@ -2,6 +2,8 @@ class AdminController < ApplicationController
 
 	layout "admin"
 
+	before_filter :authorize, :except => :login
+
   def login
 #!!! a bootstrap
 	if (Admin.find_by_name(Admin::NAME)).nil?
