@@ -5,7 +5,11 @@
 #
 # two:
 #   column: value
+
+<% SALT = "nacl" unless defined?(SALT) %>
+
 admin:
+   id: 1
    name: "admin"
-   hashed_password: "3e72603ea3ec3394377bcc48445db8dbc866e6f8"
-   salt: "184661200.510115497232435"
+   hashed_password: <%= Admin.encrypted_password('1234', SALT) %>
+   salt: <%= SALT %>
