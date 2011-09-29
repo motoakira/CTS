@@ -2,7 +2,7 @@
 <h1>Admin#list_postings</h1>
 <ul>
 	<% for posting in @all_postings %>
-		<li><%= link_to "[X]", { # link_to options
+		<li id = <%= posting.id -%> ><%= link_to "[X]", { # link_to options
 					:controller => 'admin',
 					:action => 'delete_posting',
 					:id => posting
