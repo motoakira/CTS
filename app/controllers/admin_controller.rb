@@ -52,8 +52,16 @@ class AdminController < ApplicationController
 
 	def delete_posting
 		if request.post?
-			posting = Posting.find(:params[:id])
-			posting.disable	#!!!! モデル：Postingに、記事削除の機能を !!!!
+			posting = Posting.find(params[:id])
+			ruin = posting.disable("管理者削除")
+			if !ruin.nil? && posting.save
+				if ruin.attached.nil?
+				else
+					ruin.attached.delete
+				end			
+			else
+					flash[:notice] = "Delete Failed"
+			end
 		end
 		redirect_to(:action => :list_postings)
 	end

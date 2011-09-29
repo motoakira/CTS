@@ -36,6 +36,10 @@ class AdminControllerTest < ActionController::TestCase
 		assert_response :success
 		assert_template "change_passwd"
 	end
+	test "delete_posting with admin" do
+		get :delete_posting, {}, {:admin_id => admins(:admin).id }
+		assert_redirected_to :action => "list_postings"
+	end
 
 	test "login" do
 		admin = admins(:admin)

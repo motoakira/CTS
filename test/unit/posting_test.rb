@@ -87,4 +87,21 @@ class PostingTest < ActiveSupport::TestCase
 		assert_equal "＞＞＞＞ The quick brown fox\n＞＞＞＞ jumps over\n＞＞＞＞ lazy dog.", quoted_article
 	
 	end
+
+	test "disable" do
+		root = Posting.find(31)
+		disabled = Posting.find(31)
+		ruin = disabled.disable("try to delete")
+		assert_equal root.author, ruin.author
+		assert_equal root.title, ruin.title
+		assert_equal root.article, ruin.article
+		assert_equal root.parent_id, ruin.parent_id
+		assert_equal root.attached, ruin.attached
+
+		disabled.save
+		assert_equal "<<< the Deleter >>>", disabled.author
+		assert_equal "--- try to delete ---", disabled.title
+		assert_equal "!!! Deleted:　削除されました !!!", disabled.article
+		assert_equal nil, disabled.attached
+	end
 end

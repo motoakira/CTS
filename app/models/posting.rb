@@ -67,5 +67,24 @@ def article_quote
 		q.join("\n")
 	end
 end
+def disable(note)
+	ruin = nil
+	if self.isLive
+		ruin = Posting.new
+		ruin.id = self.id
+		ruin.parent_id = self.parent_id
+		ruin.author = self.author
+		ruin.title = self.title
+		ruin.article = self.article 
+		ruin.attached = self.attached
+
+		self.author = "<<< the Deleter >>>"
+		self.title = "--- " + note + " ---"
+		self.article = "!!! Deleted:　削除されました !!!"
+		self.attached = nil
+		self.isLive = false
+	end
+	ruin
+end
 
 end
