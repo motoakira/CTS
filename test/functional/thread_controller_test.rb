@@ -8,6 +8,10 @@ class ThreadControllerTest < ActionController::TestCase
   end
 
 	def test_no_threads
+		Posting.delete_all
+		Attached.delete_all
+		CommentTree.delete_all
+
 		get :threads_out
 #p @controller.trees.inspect
 #p @response.body.inspect

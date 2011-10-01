@@ -7,9 +7,13 @@ class ArticleControllerTest < ActionController::TestCase
   end
 
 	def test_without_fixtures
+		Posting.delete_all
+		Attached.delete_all
+		CommentTree.delete_all
+
 		get :article_out
 #p  @response.body.inspect
-		assert /No Articles/ =~ @response.body
+		assert /No Article/ =~ @response.body
 	end
 
 	fixtures :comment_trees, :postings
