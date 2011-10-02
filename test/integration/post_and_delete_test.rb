@@ -18,7 +18,7 @@ class PostAndDeleteTest < ActionController::IntegrationTest
 		post_via_redirect "CTS/threads", :posting => {
 				:author => "moto",
 				:title => "base article",
-				:delkey => "0226",
+				:delkey_entered => "0226",
 				:article => "Rain\nIn Spain\n\nmainly in the plain."
 			}, :parent_id => "0"
 				
@@ -38,7 +38,7 @@ class PostAndDeleteTest < ActionController::IntegrationTest
 		post_via_redirect "CTS/threads", :posting => {
 				:author => "moto",
 				:title => "comment",
-				:delkey => "0226",
+				:delkey_entered => "0226",
 				:article => "Rain\nIn Spain\n\nmainly in the plain."
 			}, :parent_id => "36"
 		assert_template "thread/threads_out"
@@ -56,19 +56,19 @@ class PostAndDeleteTest < ActionController::IntegrationTest
 		assert /000036へのコメント/ =~ @response.body
 
 # wrong delete key
-		post_via_redirect "CTS/del_post", :to_del => "36", :delkey => "1226" 
+		post_via_redirect "CTS/del_post", :to_del => "36", :delkey_entered => "1226" 
 		assert_template "thread/threads_out"
 		assert_select "a#36", 
 			sprintf("[%06d -- %-16s] %-40s", 36, "moto", "base article").gsub(/ /, "&nbsp;")
 
 # correct delete key
-		post_via_redirect "CTS/del_post", :to_del => "36", :delkey => "0226" 
+		post_via_redirect "CTS/del_post", :to_del => "36", :delkey_entered => "0226" 
 		assert_template "thread/threads_out"
 		assert_select "a#36", 
 			sprintf("[%06d -- %-16s] %-40s", 36, "<<< the Deleter >>>", "--- ユーザー削除 ---").
 				gsub(/ /, "&nbsp;").gsub(/</, '&lt;')
 
-		post_via_redirect "CTS/del_post", :to_del => "37", :delkey => "0226" 
+		post_via_redirect "CTS/del_post", :to_del => "37", :delkey_entered => "0226" 
 		assert_template "thread/threads_out"
 		assert_select "a#37", 
 			sprintf("&mdash;[%06d -- %-16s] %-40s", 37, "<<< the Deleter >>>", "--- ユーザー削除 ---").

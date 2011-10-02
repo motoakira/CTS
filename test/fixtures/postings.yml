@@ -5,6 +5,8 @@
 #
 # two:
 #   column: value
+<% SALT = "nacl" unless defined?(SALT) %>
+
 <% 1.upto(30) do |i| %>
 post_<%= i %>:
   id: <%= i %>
@@ -13,7 +15,8 @@ post_<%= i %>:
   author: moto
   title: title_<%= i %>
   article: t/o
-  delkey: 4044
+  delkey: <%= Posting.encrypted_password('4044', SALT) %>
+  salt: <%= SALT %>
   comment_tree_id: <%= i %>
 <% end %>
 post_31:
@@ -23,7 +26,8 @@ post_31:
   author: moto
   title: title_31
   article: "The quick brown fox\njumps over\nlazy dog.\n"
-  delkey: 4044
+  delkey: <%= Posting.encrypted_password('4044', SALT) %>
+  salt: <%= SALT %>
   comment_tree_id: 31
 post_32:
   id: 32
@@ -32,7 +36,8 @@ post_32:
   author: moto
   title: Re:title_32
   article: "＞ The quick brown fox\n＞ jumps over\n＞ lazy dog.\n"
-  delkey: 4044
+  delkey: <%= Posting.encrypted_password('', SALT) %>
+  salt: <%= SALT %>
   comment_tree_id: 31
 post_33:
   id: 33
@@ -41,7 +46,8 @@ post_33:
   author: moto
   title: Re:title_33
   article: "＞ The quick brown fox\n＞ jumps over\n＞ lazy dog.\n"
-  delkey: 4044
+  delkey: <%= Posting.encrypted_password('4044', SALT) %>
+  salt: <%= SALT %>
   comment_tree_id: 31
 post_34:
   id: 34
@@ -50,7 +56,8 @@ post_34:
   author: moto
   title: Re^2:title_34
   article: "＞＞ The quick brown fox\n＞＞ jumps over\n＞＞ lazy dog.\n"
-  delkey: 4044
+  delkey: <%= Posting.encrypted_password('4044', SALT) %>
+  salt: <%= SALT %>
   comment_tree_id: 31
 post_35:
   id: 35
@@ -59,5 +66,6 @@ post_35:
   author: moto
   title: Re^3:title_35
   article: "＞＞＞ The quick brown fox\n＞＞＞ jumps over\n＞＞＞ lazy dog.\n"
-  delkey: 4044
+  delkey: <%= Posting.encrypted_password('4044', SALT) %>
+  salt: <%= SALT %>
   comment_tree_id: 31

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924025653) do
+ActiveRecord::Schema.define(:version => 20111002015124) do
 
   create_table "admins", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20110924025653) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comment_tree_id"
+    t.string   "salt"
   end
 
 end

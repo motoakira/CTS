@@ -4,15 +4,13 @@ class CtsController < ApplicationController
 def del_post()
 	to_del = params['to_del'].to_i
 	ruin = nil
-	delkey_entered = params['delkey']
+	delkey_entered = params['delkey_entered']
 	Posting.transaction { 
 	begin
-		thePost = Posting.find(to_del, :lock => true)
-		if thePost.delkey == ""
-		elsif thePost.delkey == delkey_entered
+		if  posting = Posting.authenticate(to_del, delkey_entered)
 			note = "ユーザー削除"
-			ruin = thePost.disable(note)
-			if !ruin.nil? && thePost.save!
+			ruin = posting.disable(note)
+			if !ruin.nil? && posting.save!
 # ここまで、エラーなく削除処理が辿り着けば、添付ファイルの残滓を消す。
 				if ruin.attached.nil?
 				else

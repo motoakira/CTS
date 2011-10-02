@@ -104,4 +104,16 @@ class PostingTest < ActiveSupport::TestCase
 		assert_equal "!!! Deleted:　削除されました !!!", disabled.article
 		assert_equal nil, disabled.attached
 	end
+
+	test "authenticate" do
+		posting = Posting.authenticate(32, "")
+		assert posting.nil?	# fail with posting that has empty delkey
+		
+		posting = Posting.authenticate(31, "0987")
+		assert posting.nil?	# fail when delkeys don't match
+		
+		posting = Posting.authenticate(31, "4044")
+#p posting.inspect
+		assert_equal 31, posting.id	# success when delkeys match
+	end
 end

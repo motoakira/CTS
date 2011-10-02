@@ -23,7 +23,7 @@ class PostFormControllerTest < ActionController::TestCase
 			assert_select "input#posting_title[type=text]"
 			assert_select "textarea#posting_article"
 			assert_select "input#attached_file2up[type=file]"
-			assert_select "input#posting_delkey[type=password]"
+			assert_select "input#posting_delkey_entered[type=password]"
 			assert_select "input[name=commit][type=submit]"
 			assert_select "input[type=reset]"
 		
@@ -38,7 +38,7 @@ class PostFormControllerTest < ActionController::TestCase
 			assert_select "input#posting_title[type=text]"
 			assert_select "textarea#posting_article"
 			assert_select "input#attached_file2up[type=file]"
-			assert_select "input#posting_delkey[type=password]"
+			assert_select "input#posting_delkey_entered[type=password]"
 			assert_select "input[name=commit][type=submit]"
 			assert_select "input[type=reset]"
 		

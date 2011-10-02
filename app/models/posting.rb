@@ -1,3 +1,5 @@
+require	'digest/sha1'
+
 class Posting < ActiveRecord::Base
 	attr_protected :parent_id, :isLive
 	
@@ -35,7 +37,6 @@ class Posting < ActiveRecord::Base
 		end
 	end
 
-#private
 def title_quote
 	if self.title.nil?
 		""
@@ -87,4 +88,39 @@ def disable(note)
 	ruin
 end
 
+	def self.authenticate(id, password)
+		posting = self.find(id, :lock => true)
+		if posting
+			# abort if posting has as delkey an empty string.
+			return nil if posting.delkey.nil? || posting.delkey == encrypted_password("", posting.salt)
+
+			expedcted_password = encrypted_password(password, posting.salt)
+			if posting.delkey != expedcted_password
+				posting = nil
+			end
+		end
+		posting
+	end
+	
+	# 'delkey_entered' is a virtual attribute
+	def delkey_entered
+		@delkey_entered
+	end
+	
+	def delkey_entered=(pwd)
+		@delkey_entered = pwd
+		return if pwd.blank?
+		create_new_salt
+		self.delkey = Posting.encrypted_password(self.delkey_entered, self.salt)
+	end
+
+private
+	def self.encrypted_password(password, salt)
+		string_to_hash = password + "wibble" + salt
+		Digest::SHA1.hexdigest(string_to_hash)
+	end
+	
+	def create_new_salt
+		self.salt = self.object_id.to_s + rand.to_s
+	end
 end

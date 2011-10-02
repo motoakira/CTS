@@ -20,7 +20,7 @@
 		File to Upload:<% fields_for :attached do |attached| %>
 			<%= attached.file_field("file2up", 'accept' =>  accept_list)  %>
 		<% end %><br />
-		削除キー<%=  form.password_field(:delkey, :size => 8, :maxlength => 8) %><br />
+		削除キー<%=  form.password_field(:delkey_entered, :size => 8, :maxlength => 8) %><br />
 		<%= submit_tag("Post", :onclick => "javascript: setTimeout('window.close();', 0 * 1000)") -%><input type = "reset">
 	<% end %>
 
