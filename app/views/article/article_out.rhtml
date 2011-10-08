@@ -1,4 +1,4 @@
-
+<% require 'time' %>
 <% if flash[:msg] -%>
 	<%= flash[:msg] -%>
 <% else -%>
@@ -37,7 +37,7 @@
 							</th>
 					</tr>
 					<tr valign = "middle">
-						<th><%= @posting.updated_at -%></th>
+						<th><%= @posting.updated_at.strftime("%Y.%m.%d (%a) %H:%M:%S %Z") -%></th>
 					</tr>
 				</table>
 			</td>
