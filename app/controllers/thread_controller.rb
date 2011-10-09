@@ -13,7 +13,14 @@ class ThreadController < ApplicationController
 
 # http POST
 def rcv_post()
-#		handle_cookie()
+	if params[:posting].nil?
+		author = ""
+		delkey_entered = ""
+	else
+		author = params[:posting][:author]
+		delkey_entered = params[:posting][:delkey_entered]
+	end
+	handle_cookie(author, delkey_entered)
 
 	is_valid = form_accept()
 	if is_valid 
@@ -43,18 +50,10 @@ end
 private
 
 # update cookies
-=begin
-def handle_cookie()
-		pref_key = "preferences"
-		if cgi.cookies.has_key?(pref_key)
-			cgi.cookies[pref_key].value[0] = handle
-		else
-			cgi.cookies[pref_key] = CGI::Cookie.new(
-				{ "name" => pref_key, "value" => [handle] })
-		end
-		cgi.cookies[pref_key].expires = Time.now + OneWeek
-end
-=end
+	def handle_cookie(author, delkey_entered)
+		cookies[:author] = { :value => author, :expires => 7.days.from_now }
+		cookies[:delkey_entered] = { :value => delkey_entered, :expires => 7.days.from_now }
+	end
 		
 def form_accept()
 	result = nil

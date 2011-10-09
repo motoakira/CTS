@@ -11,11 +11,8 @@ def post_form()
 	@posting.article = parent.article_quote
 	
 # set Handle
-=begin
-	pref_cookie = cgi.cookies["preferences"]
-	saved_handle = ( pref_cookie == [] ) ? "": pref_cookie.value[0]
-	@posting.handle = 
-=end
+	@posting.author = ( cookies[:author].blank? ) ? "": cookies[:author]
+	@posting.delkey_entered = ( cookies[:delkey_entered].blank? ) ? "": cookies[:delkey_entered]
 
 	@attached = Attached.new
 	@page_title = "PostForm"
