@@ -52,7 +52,10 @@
 	<%	else %>
 			<td width = "60%"><%= article_read(@posting.article) %></td>
 			<td align = "right" width = "40%">
-				<img src = "<%= url_for(:action => 'photo', :id => @posting.id) %>"/></td>
+				<a href="<%= url_for(:action => 'photo', :id => @posting.id) %>" target = "_blank">
+					<img src = "<%= url_for(:action => 'photo', :id => @posting.id) %>" height="360"/>
+				</a>
+			</td>
 	<%	end %>
 	</tr>
 </table>
